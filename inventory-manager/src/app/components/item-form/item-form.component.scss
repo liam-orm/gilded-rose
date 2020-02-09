@@ -1,0 +1,12 @@
+.item-form {
+    margin: 1em;
+
+    &__array {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__array-item {
+        margin: 0 1em;
+    }
+}

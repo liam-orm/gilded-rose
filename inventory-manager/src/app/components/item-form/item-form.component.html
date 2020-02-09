@@ -1,1 +1,26 @@
-<p>item-form works!</p>
+<form class='item-form' [formGroup]="itemForm">
+    <div class='item-form__array' formArrayName='items'>
+        <div class='item-form__array-item' *ngFor='let item of itemForms.controls.reverse(); let i=index' [formGroupName]='i'>
+            <label *ngIf="items.controls[i].get('itemName').errors?.required">This field is required</label> <br>
+            <mat-form-field>
+                <input matInput placeholder="Item name" formControlName="itemName">
+            </mat-form-field> <br>
+            <label *ngIf="items.controls[i].get('quality').errors?.required">This field is required</label>
+            <label *ngIf="items.controls[i].get('quality').errors?.max">The quality cannot be above 50</label>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Quality" formControlName="quality">
+            </mat-form-field> <br>
+            <label *ngIf="items.controls[i].get('sellIn').errors?.required">This field is required</label> <br>
+            <mat-form-field>
+                <input matInput placeholder="Sell in" formControlName="sellIn">
+            </mat-form-field> <br>
+
+            <button mat-raised-button color='warn' (click)='deleteItem(i)'>Remove</button>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <button mat-raised-button color='primary' (click)='addItem()'>Add item</button>
+</form>
