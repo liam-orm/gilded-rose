@@ -22,18 +22,6 @@ export class ItemFormComponent implements OnInit {
 
   ngOnInit () {
     this.itemForm = this.fb.group({
-      items: this.fb.array([])
-    })
-
-    this.itemForm.valueChanges.subscribe(console.log)
-  }
-
-  get itemForms () {
-    return this.itemForm.get('items') as FormArray
-  }
-
-  addItem () {
-    const item = this.fb.group({
       ItemName: ['', [
         Validators.required
       ]],
@@ -46,11 +34,23 @@ export class ItemFormComponent implements OnInit {
       ]]
     })
 
-    this.itemForms.push(item);
+    this.itemForm.valueChanges.subscribe(console.log)
   }
 
-  get items (): FormArray {
-    return this.itemForm.get('items') as FormArray;
+  get itemForms () {
+    return this.itemForm.get('items') as FormArray
+  }
+
+  get ItemName () {
+    return this.itemForm.get('ItemName')
+  }
+
+  get Quality () {
+    return this.itemForm.get('Quality')
+  }
+
+  get SellIn () {
+    return this.itemForm.get('SellIn')
   }
 
   deleteItem (i) {
@@ -60,12 +60,12 @@ export class ItemFormComponent implements OnInit {
   async handleSubmit () {
     this.loading = true
 
-    const values = this.itemForm.value;
+    const data = this.itemForm.value
 
     try {
-      console.log(values)
-      axios.post(`https://localhost:5001/api/inventory`, values).then(result => {
-        console.log(result)
+      console.log(data)
+      axios.post(`https://localhost:5001/api/inventory`, data).then(result => {
+        console.log('Result', result.data)
       })
     } catch (e) {
       console.error(e)

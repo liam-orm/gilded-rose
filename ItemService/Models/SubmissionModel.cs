@@ -4,6 +4,6 @@ namespace ItemService.Models
 {
     public class SubmissionModel
     {
-        public IList<Item> items { get; set; }
+        public List<Item> Items { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using ItemService.Models;
+﻿using ItemService.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +10,12 @@ namespace ItemService.Controllers
     public class InventoryController : ControllerBase
     {
         [HttpPost]
-        public SubmissionModel Post([FromBody]SubmissionModel data)
+        public Item Post(Item _requestData)
         {
-            SubmissionModel model = new SubmissionModel();
+            _requestData.Quality--;
+            _requestData.SellIn--;
 
-            return data;
+            return _requestData;
         }
     }
 }
