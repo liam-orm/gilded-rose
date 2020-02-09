@@ -1,19 +1,19 @@
 <form class='item-form' [formGroup]="itemForm">
     <div class='item-form__array' formArrayName='items'>
         <div class='item-form__array-item' *ngFor='let item of itemForms.controls.reverse(); let i=index' [formGroupName]='i'>
-            <label *ngIf="items.controls[i].get('itemName').errors?.required">This field is required</label> <br>
+            <label *ngIf="items.controls[i].get('ItemName').errors?.required">This field is required</label> <br>
             <mat-form-field>
-                <input matInput placeholder="Item name" formControlName="itemName">
+                <input matInput placeholder="Item name" formControlName="ItemName">
             </mat-form-field> <br>
-            <label *ngIf="items.controls[i].get('quality').errors?.required">This field is required</label>
-            <label *ngIf="items.controls[i].get('quality').errors?.max">The quality cannot be above 50</label>
+            <label *ngIf="items.controls[i].get('Quality').errors?.required">This field is required</label>
+            <label *ngIf="items.controls[i].get('Quality').errors?.max">The quality cannot be above 50</label>
             <br>
             <mat-form-field>
-                <input matInput placeholder="Quality" formControlName="quality">
+                <input matInput placeholder="Quality" formControlName="Quality">
             </mat-form-field> <br>
-            <label *ngIf="items.controls[i].get('sellIn').errors?.required">This field is required</label> <br>
+            <label *ngIf="items.controls[i].get('SellIn').errors?.required">This field is required</label> <br>
             <mat-form-field>
-                <input matInput placeholder="Sell in" formControlName="sellIn">
+                <input matInput placeholder="Sell in" formControlName="SellIn">
             </mat-form-field> <br>
 
             <button mat-raised-button color='warn' (click)='deleteItem(i)'>Remove</button>
@@ -22,5 +22,7 @@
         </div>
     </div>
 
-    <button mat-raised-button color='primary' (click)='addItem()'>Add item</button>
+    <button mat-raised-button color='secondary' (click)='addItem()'>Add item</button>
+
+    <button mat-raised-button color='primary' (click)='handleSubmit()'>Get Values!</button>
 </form>

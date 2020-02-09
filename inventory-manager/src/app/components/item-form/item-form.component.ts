@@ -34,14 +34,14 @@ export class ItemFormComponent implements OnInit {
 
   addItem () {
     const item = this.fb.group({
-      itemName: ['', [
+      ItemName: ['', [
         Validators.required
       ]],
-      quality: ['', [
+      Quality: ['', [
         Validators.required,
         Validators.max(50)
       ]],
-      sellIn: ['', [
+      SellIn: ['', [
         Validators.required
       ]]
     })
@@ -63,7 +63,10 @@ export class ItemFormComponent implements OnInit {
     const values = this.itemForm.value;
 
     try {
-      await axios.post(app.ItemServiceURL`/gettomorrow/values`, values)
+      console.log(values)
+      axios.post(`https://localhost:5001/api/inventory`, values).then(result => {
+        console.log(result)
+      })
     } catch (e) {
       console.error(e)
     }
