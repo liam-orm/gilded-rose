@@ -5,3 +5,9 @@ services:
         build: ./ItemService
         ports:
             - 5001:80
+    webserver:
+        build: ./inventory-manager
+        ports:
+            - 5000:80
+        depends_on:
+            - item-service
