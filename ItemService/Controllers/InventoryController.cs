@@ -1,6 +1,7 @@
 ﻿using ItemService.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using ItemService.Extensions;
 
 namespace ItemService.Controllers
 {
@@ -12,10 +13,31 @@ namespace ItemService.Controllers
         [HttpPost]
         public Item Post(Item _requestData)
         {
-            _requestData.Quality--;
-            _requestData.SellIn--;
+            _requestData = IsItemValid(_requestData);
+            if (_requestData.ItemIsValid)
+            {
+                _requestData = _requestData
+                    .DoesQualityDegradate()
+                    .IsQualityValid()
+                    .CalculateSellIn();
+            }
 
             return _requestData;
+        }
+
+        private Item IsItemValid(Item _item)
+        {
+            string itemName = _item.ItemName.ToLower();
+
+            if (itemName == "aged brie" |
+                itemName == "normal item" |
+                itemName == "conjured" |
+                itemName == "sulfuras" |
+                itemName == "backstage passes")
+            {
+                _item.ItemIsValid = true;
+            }
+            return _item;
         }
     }
 }

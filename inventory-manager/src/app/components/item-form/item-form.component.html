@@ -19,3 +19,10 @@
     </mat-form-field> <br>
     <button mat-raised-button color='primary' [disabled]='itemForm.invalid' (click)='handleSubmit()'>Get Values!</button>
 </form>
+
+<div>
+    results:
+    <div *ngFor='let item of processedItems'>
+        <div>Itemname: {{ item }}</div>
+    </div>
+</div>

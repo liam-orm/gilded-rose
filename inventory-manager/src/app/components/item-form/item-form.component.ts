@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import axios from 'axios'
 
 import { app } from '../../../config/app'
+import { Item } from 'src/app/models/Item';
 
 @Component({
   selector: 'app-item-form',
@@ -15,8 +16,7 @@ export class ItemFormComponent implements OnInit {
 
   itemForm: FormGroup;
 
-  loading = false;
-  submitted = false;
+  processedItems: Item[] = [];
 
   constructor(private fb: FormBuilder) { }
 
@@ -58,15 +58,13 @@ export class ItemFormComponent implements OnInit {
   }
 
   async handleSubmit () {
-    this.loading = true
-
     const data = this.itemForm.value
 
     try {
       console.log(data)
-      axios.post(`https://localhost:5001/api/inventory`, data).then(result => {
-        console.log('Result', result.data)
-      })
+      axios.post(`${app.ItemServiceURL}/inventory`, data).then(result => {
+        this.processedItems.push(result.data)
+      });
     } catch (e) {
       console.error(e)
     }
