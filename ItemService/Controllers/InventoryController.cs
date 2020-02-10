@@ -1,12 +1,10 @@
 ﻿using ItemService.Models;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ItemService.Extensions;
 
 namespace ItemService.Controllers
 {
     [ApiController]
-    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     public class InventoryController : ControllerBase
     {

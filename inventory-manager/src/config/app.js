@@ -1,3 +1,3 @@
 export const app = {
-    ItemServiceURL: 'https://localhost:5001/api'
+    ItemServiceURL: process.env.NODE_ENV === 'production' ? 'http://localhost:5001/api' : 'https://localhost:5001/api'
 }

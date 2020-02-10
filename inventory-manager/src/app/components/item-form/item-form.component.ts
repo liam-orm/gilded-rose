@@ -6,6 +6,7 @@ import axios from 'axios'
 
 import { app } from '../../../config/app'
 import { Item } from 'src/app/models/Item';
+import { TimeoutError } from 'rxjs';
 
 @Component({
   selector: 'app-item-form',
@@ -54,7 +55,11 @@ export class ItemFormComponent implements OnInit {
     const data = this.itemForm.value
 
     try {
-      axios.post(`${app.ItemServiceURL}/inventory`, data).then(result => {
+      axios({
+        method: 'post',
+        url: `${app.ItemServiceURL}/inventory`,
+        data: data
+      }).then(result => {
         this.processedItems.push(result.data)
       });
     } catch (e) {
