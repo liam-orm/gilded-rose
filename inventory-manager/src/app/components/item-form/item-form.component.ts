@@ -32,8 +32,6 @@ export class ItemFormComponent implements OnInit {
         Validators.required
       ]]
     })
-
-    this.itemForm.valueChanges.subscribe(console.log)
   }
 
   get itemForms () {
@@ -50,10 +48,6 @@ export class ItemFormComponent implements OnInit {
 
   get SellIn () {
     return this.itemForm.get('SellIn')
-  }
-
-  deleteItem (i) {
-    this.itemForms.removeAt(i)
   }
 
   async handleSubmit () {
