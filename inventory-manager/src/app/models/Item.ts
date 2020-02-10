@@ -1,6 +1,6 @@
 export class Item {
-    ItemName: string;
-    Quality: number;
-    SellIn: number;
-    ItemIsValid: boolean;
+    itemName: string;
+    quality: number;
+    sellIn: number;
+    itemIsValid: boolean;
 }

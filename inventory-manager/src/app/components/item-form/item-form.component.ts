@@ -26,8 +26,7 @@ export class ItemFormComponent implements OnInit {
         Validators.required
       ]],
       Quality: ['', [
-        Validators.required,
-        Validators.max(50)
+        Validators.required
       ]],
       SellIn: ['', [
         Validators.required
@@ -61,7 +60,6 @@ export class ItemFormComponent implements OnInit {
     const data = this.itemForm.value
 
     try {
-      console.log(data)
       axios.post(`${app.ItemServiceURL}/inventory`, data).then(result => {
         this.processedItems.push(result.data)
       });

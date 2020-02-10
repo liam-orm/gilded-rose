@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { app } from '../../../config/app'
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,7 +8,6 @@ import { app } from '../../../config/app'
 export class HomeComponent implements OnInit {
 
   constructor() {
-    console.log(app.ItemServiceURL)
   }
 
   ngOnInit() {

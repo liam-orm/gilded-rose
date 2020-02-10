@@ -1,12 +1,24 @@
 .item-form {
     margin: 1em;
+}
 
-    &__array {
-        display: flex;
-        flex-direction: row;
-    }
+.results {
+    margin-left: 1em;
 
-    &__array-item {
-        margin: 0 1em;
+    &__table {
+        width: 100%;
+        text-align: left;
+        border-collapse: collapse;
+
+        thead {
+            background: #333;
+            color: white;
+        }
+        th,
+        td {
+            font-weight: 100;
+            padding: .5em 1em;
+            border: 1px solid black;
+        }
     }
 }
