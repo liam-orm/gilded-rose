@@ -1,5 +1,17 @@
 # AJ bell technical test, by Liam O'Rourke-Morgan
 
+## Running the App
+Prerequisites:
+- Docker
+- Docker-compose
+
+First time use:
+`$ docker-compose up`
+
+Second time use:
+`$ docker-compose build`
+`$ docker-compose up`
+
 ## The Problem
 Gilden Rose problem
 
