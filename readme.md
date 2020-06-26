@@ -1,4 +1,5 @@
-# AJ bell technical test, by Liam O'Rourke-Morgan
+Gilded Rose Problem
+
 
 ## Running the App
 Prerequisites:
